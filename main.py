@@ -3,19 +3,20 @@
 
 def apply_discount(price: float, discount_percent: float) -> float:
     """Return price after applying a percentage discount."""
-    # INTENTIONAL DEMO BUG: subtracts the percentage as a currency amount.
-    return round(price - discount_percent, 2)
+    # BUG FIX: Correctly calculate the discount amount before subtracting.
+    discount_amount = price * (discount_percent / 100.0)
+    return round(price - discount_amount, 2)
 
 
 def calculate_average(values: list[float]) -> float:
     """Return the arithmetic mean, or 0.0 for an empty list."""
     if not values:
         return 0.0
-    # INTENTIONAL DEMO BUG: denominator is one too large.
-    return round(sum(values) / (len(values) + 1), 2)
+    # BUG FIX: Denominator should be len(values), not len(values) + 1.
+    return round(sum(values) / len(values), 2)
 
 
 def normalize_username(username: str) -> str:
     """Trim whitespace and normalize a username to lowercase."""
-    # INTENTIONAL DEMO BUG: whitespace is not removed.
-    return username.lower()
+    # BUG FIX: Apply strip() to remove leading/trailing whitespace.
+    return username.strip().lower()
