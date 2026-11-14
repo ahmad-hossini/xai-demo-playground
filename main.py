@@ -3,8 +3,10 @@
 
 def apply_discount(price: float, discount_percent: float) -> float:
     """Return price after applying a percentage discount."""
-    # INTENTIONAL DEMO BUG: subtracts the percentage as a currency amount.
-    return round(price - discount_percent, 2)
+    # Calculate the actual discount amount based on the percentage
+    discount_amount = price * (discount_percent / 100.0)
+    # Subtract the calculated discount from the original price
+    return round(price - discount_amount, 2)
 
 
 def calculate_average(values: list[float]) -> float:
